@@ -14,7 +14,6 @@ namespace EmployeesApp.IntegrationTests
         {
             builder.ConfigureServices(services =>
             {
-
                 var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<EmployeeContext>));
 
                 if (descriptor != null)

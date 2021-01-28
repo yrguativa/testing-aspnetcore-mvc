@@ -30,7 +30,11 @@ namespace EmployeesApp.IntegrationTests
                     options.UseInMemoryDatabase("InMemoryEmployeeTest");
                     options.UseInternalServiceProvider(serviceProvider);
                 });
-
+                services.AddAntiforgery(t =>
+                {
+                    t.Cookie.Name = AntiForgeryTokenExtractor.AntiForgeryCookieName;
+                    t.FormFieldName = AntiForgeryTokenExtractor.AntiForgeryFieldName;
+                });
                 var sp = services.BuildServiceProvider();
 
                 using (var scope = sp.CreateScope())
